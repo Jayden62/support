@@ -111,7 +111,7 @@ class HomeState extends State<HomeScreen> {
               ),
             ),
             /**
-             * notify
+             * Notify
              */
             GestureDetector(
               child: Container(
