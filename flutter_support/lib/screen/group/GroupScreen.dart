@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_support/api/API.dart';
 import 'package:flutter_support/item/GroupItem.dart';
-import 'package:flutter_support/model/Group.dart';
+import 'package:flutter_support/model/User.dart';
 import 'package:flutter_support/style/Style.dart';
 
 class GroupScreen extends StatefulWidget {
@@ -14,29 +15,26 @@ class GroupScreen extends StatefulWidget {
 
 class GroupState extends State<GroupScreen> {
   var searchController = TextEditingController();
-  List<Group> groupList = [];
+  final userStream = StreamController<List<Data>>.broadcast();
 
   @override
   void initState() {
     super.initState();
-    groupList.add(Group(
-        title: 'Flutter community',
-        description: 'abcccccccccccccccccccccccccccccccccc'));
-    groupList.add(Group(
-        title: 'Flutter community',
-        description: 'abcccccccccccccccccccccccccccccccccc'));
-    groupList.add(Group(
-        title: 'Flutter community',
-        description: 'abcccccccccccccccccccccccccccccccccc'));
-    groupList.add(Group(
-        title: 'Flutter community',
-        description: 'abcccccccccccccccccccccccccccccccccc'));
+
+    Future.delayed(Duration(), () async {
+      List<Data> result = await API.instance.getUsers();
+      if (result == null) {
+        return;
+      }
+      userStream.sink.add(result);
+    });
   }
 
   @override
   void dispose() {
     super.dispose();
     searchController.dispose();
+    userStream.close();
   }
 
   @override
@@ -55,10 +53,20 @@ class GroupState extends State<GroupScreen> {
   }
 
   Widget _groups() => Expanded(
-          child: ListView.builder(
-        itemCount: groupList.length,
-        itemBuilder: (BuildContext context, int index) =>
-            GroupItem(groupList[index]),
+          child: StreamBuilder(
+        stream: userStream.stream,
+        builder: (context, snapshot) {
+          List<Data> groupList = [];
+          if (snapshot.data != null && snapshot.hasData) {
+            groupList = snapshot.data;
+            return ListView.builder(
+              itemCount: groupList.length,
+              itemBuilder: (BuildContext context, int index) =>
+                  GroupItem(groupList[index]),
+            );
+          }
+          return Container();
+        },
       ));
 
   Widget _filterGroup() => Container(

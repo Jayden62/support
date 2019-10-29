@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_support/model/Group.dart';
+import 'package:flutter_support/model/User.dart';
 import 'package:flutter_support/style/Style.dart';
 
 class GroupItem extends StatefulWidget {
-  final Group item;
+  final Data item;
 
   GroupItem(this.item);
 
@@ -43,7 +43,7 @@ class GroupItemState extends State<GroupItem> {
                     Container(
                       margin: EdgeInsets.only(left: margin10),
                       child: Text(
-                        'Creator : Jackie Lê',
+                        'Creator : ${widget.item.name}',
                         style: TextStyle(fontStyle: FontStyle.italic),
                       ),
                     ),
@@ -56,10 +56,20 @@ class GroupItemState extends State<GroupItem> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Container(
-                          child: Text('Group title : IT'),
+                          child: Text('Email : ${widget.item.email}'),
                         ),
                         Container(
-                          child: Text('abcccccccccccccccccccccccccccccc'),
+                          child: Text('Phone : ${widget.item.phone}'),
+                        ),
+                        Container(
+                          child: Text('Company : ${widget.item.company.name}'),
+                        ),
+                        Container(
+                          child: Text(
+                              'Address : ${widget.item.address.city} ${widget.item.address.street}'),
+                        ),
+                        Container(
+                          child: Text('Website : ${widget.item.website}'),
                         ),
                       ],
                     ),

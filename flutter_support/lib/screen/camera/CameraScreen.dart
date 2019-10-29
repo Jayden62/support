@@ -1,4 +1,7 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
 
 class CameraScreen extends StatefulWidget {
   @override
@@ -10,6 +13,6 @@ class CameraScreen extends StatefulWidget {
 class CameraState extends State<CameraScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.red);
+    return Container();
   }
 }
