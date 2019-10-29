@@ -5,6 +5,7 @@ import 'package:flutter_support/api/API.dart';
 import 'package:flutter_support/item/GroupItem.dart';
 import 'package:flutter_support/model/User.dart';
 import 'package:flutter_support/style/Style.dart';
+import 'package:flutter_support/utils/DialogUtil.dart';
 
 class GroupScreen extends StatefulWidget {
   @override
@@ -45,7 +46,6 @@ class GroupState extends State<GroupScreen> {
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
           _searchGroup(),
-          _filterGroup(),
           _groups(),
         ],
       ),
@@ -53,27 +53,27 @@ class GroupState extends State<GroupScreen> {
   }
 
   Widget _groups() => Expanded(
+      child: Container(
+          margin: EdgeInsets.only(top: margin10),
           child: StreamBuilder(
-        stream: userStream.stream,
-        builder: (context, snapshot) {
-          List<Data> groupList = [];
-          if (snapshot.data != null && snapshot.hasData) {
-            groupList = snapshot.data;
-            return ListView.builder(
-              itemCount: groupList.length,
-              itemBuilder: (BuildContext context, int index) =>
-                  GroupItem(groupList[index]),
-            );
-          }
-          return Container();
-        },
-      ));
-
-  Widget _filterGroup() => Container(
-      margin: EdgeInsets.only(left: margin10, right: margin10, top: margin10),
-      child: Center(
-        child: Text('Filter group'),
-      ));
+            stream: userStream.stream,
+            builder: (context, snapshot) {
+              List<Data> groupList = [];
+              if (snapshot.data != null && snapshot.hasData) {
+                groupList = snapshot.data;
+                return ListView.builder(
+                  itemCount: groupList.length,
+                  itemBuilder: (BuildContext context, int index) => GroupItem(
+                    groupList[index],
+                    tapItem: (Data value) {
+                      DialogUtil.instance.itemDialog(context, value: value);
+                    },
+                  ),
+                );
+              }
+              return Container();
+            },
+          )));
 
   Widget _searchGroup() => Container(
       padding: EdgeInsets.all(padding5),
