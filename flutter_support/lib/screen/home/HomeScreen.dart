@@ -115,27 +115,29 @@ class HomeState extends State<HomeScreen> {
              */
             GestureDetector(
               child: Container(
-                  margin: EdgeInsets.only(right: margin10),
-                  child: Stack(
-                    children: <Widget>[
-                      Container(child: Icon(Icons.notifications)),
-                      Positioned(
-                        right: 0,
-                        child: Container(
-                          padding: EdgeInsets.all(2),
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Text(
-                            '0',
-                            style: TextStyle(color: Colors.white, fontSize: 10),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      )
-                    ],
-                  )),
+                margin: EdgeInsets.only(right: margin10),
+//                  child: Stack(
+//                    children: <Widget>[
+//                      Container(child: Icon(Icons.notifications)),
+//                      Positioned(
+//                        right: 0,
+//                        child: Container(
+//                          padding: EdgeInsets.all(2),
+//                          decoration: BoxDecoration(
+//                            color: Colors.blue,
+//                            shape: BoxShape.circle,
+//                          ),
+//                          child: Text(
+//                            '0',
+//                            style: TextStyle(color: Colors.white, fontSize: 10),
+//                            textAlign: TextAlign.center,
+//                          ),
+//                        ),
+//                      )
+//                    ],
+//                  ),
+                child: Icon(Icons.person),
+              ),
             ),
           ],
         ),

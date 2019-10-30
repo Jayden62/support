@@ -71,7 +71,22 @@ class GroupState extends State<GroupScreen> {
                   ),
                 );
               }
-              return Container();
+              return Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.blue)),
+                    Container(
+                      margin: EdgeInsets.only(top: margin10),
+                      child: Text(
+                        'Loading data...',
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                    ),
+                  ],
+                ),
+              );
             },
           )));
 
