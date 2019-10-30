@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_support/screen/booking/BookingScreen.dart';
 import 'package:flutter_support/screen/camera/CameraScreen.dart';
 import 'package:flutter_support/screen/group/GroupScreen.dart';
+import 'package:flutter_support/screen/self/SelfScreen.dart';
 import 'package:flutter_support/style/Style.dart';
+import 'package:flutter_support/utils/NavigateUtil.dart';
 import 'package:flutter_support/widget/SwapWidget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,6 +19,7 @@ class HomeScreen extends StatefulWidget {
 class HomeState extends State<HomeScreen> {
   final PageController pageController = PageController();
   final tabStream = StreamController<int>.broadcast();
+  final String nickName = 'Jack Le';
 
   @override
   void dispose() {
@@ -107,13 +110,20 @@ class HomeState extends State<HomeScreen> {
             Container(
               child: Text(
                 'Support',
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 16),
               ),
             ),
             /**
              * Notify
              */
             GestureDetector(
+              onTap: () {
+                NavigateUtil().pushScreen(
+                    context,
+                    SelfScreen(
+                      nickName: nickName,
+                    ));
+              },
               child: Container(
                 margin: EdgeInsets.only(right: margin10),
 //                  child: Stack(

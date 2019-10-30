@@ -86,7 +86,7 @@ class SwapState extends State<SwapWidget> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    _homeIcon(widget: Icon(Icons.zoom_out_map)),
+                    _homeIcon(widget: Icon(Icons.calendar_today)),
                     Container(
                       child: Text('Booking'),
                     ),
