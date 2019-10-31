@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:camera_fix_exception/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_support/style/Style.dart';
@@ -20,6 +22,7 @@ class CaptureState extends State<CaptureScreen> {
 //  final StreamController<String> updateValueStream = StreamController<String>();
   CameraController _controller;
   Future<void> _initializeControllerFuture;
+  final pathStream = StreamController<List<String>>.broadcast();
 
 //  List<Photo> photos = [];
 //  int count = 0;
@@ -28,7 +31,8 @@ class CaptureState extends State<CaptureScreen> {
 //  String dateTime = '';
 //  Data result;
 //  List<String> compressPathArray = [];
-//  int trackingTime;
+  int trackingTime;
+
 //  List<String> pathSelected = [];
 
   @override
@@ -43,8 +47,9 @@ class CaptureState extends State<CaptureScreen> {
 
   @override
   void dispose() {
-    _controller.dispose();
     super.dispose();
+    _controller.dispose();
+    pathStream.close();
   }
 
   @override
@@ -97,12 +102,12 @@ class CaptureState extends State<CaptureScreen> {
                 onTap: () async {
                   try {
                     int time = DateTime.now().millisecondsSinceEpoch;
-//                    if (trackingTime != null) {
-//                      if (time - trackingTime < 500) {
-//                        return;
-//                      }
-//                    }
-//                    trackingTime = time;
+                    if (trackingTime != null) {
+                      if (time - trackingTime < 500) {
+                        return;
+                      }
+                    }
+                    trackingTime = time;
 
                     await _initializeControllerFuture;
                     String timestamp =
@@ -111,6 +116,9 @@ class CaptureState extends State<CaptureScreen> {
                         '$timestamp.jpeg');
 
                     await _controller.takePicture(path);
+                    List<String> pathList = [];
+                    pathList.add(path);
+                    pathStream.sink.add(pathList);
 
 //                    if (count < int.parse(result.uploadLimit)) {
 //                      String timestamp =
@@ -165,7 +173,7 @@ class CaptureState extends State<CaptureScreen> {
                             child: Icon(
                               Icons.camera_alt,
                               color: Colors.white,
-                              size: 35,
+                              size: 30,
                             )),
                         Container(
                             height: 100,
