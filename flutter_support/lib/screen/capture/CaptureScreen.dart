@@ -119,42 +119,6 @@ class CaptureState extends State<CaptureScreen> {
                     List<String> pathList = [];
                     pathList.add(path);
                     pathStream.sink.add(pathList);
-
-//                    if (count < int.parse(result.uploadLimit)) {
-//                      String timestamp =
-//                          DateTime.now().millisecondsSinceEpoch.toString();
-//
-//                      await _initializeControllerFuture;
-//                      final path = join((await getTemporaryDirectory()).path,
-//                          '$timestamp.jpeg');
-//                      var now = DateTime.now();
-//                      dateTime = DateUtil().castDateTimeToStringCheckIn(
-//                          now, DateUtil.DD_MM_YYYY_HH_MM_SS);
-//                      await _controller.takePicture(path);
-//
-////                      count++;
-////                      value = count.toString();
-////                      updateValueStream.sink.add(value);
-//
-//                      var checked = await Navigator.push(
-//                        context,
-//                        MaterialPageRoute(
-//                            builder: (context) => BaseWidget(
-//                                screen: Screens.ADMIT,
-//                                arguments: [path, widget.data, pathSelected])),
-//                      );
-//                      if (checked) {
-//                        if (pathSelected.length ==
-//                            int.parse(result.uploadLimit)) {
-//                          Navigator.pop(context, createPhotos());
-//                        } else {
-//                          updateValueStream.sink
-//                              .add(pathSelected.length.toString());
-//                        }
-//                      }
-//                    } else {
-//                      return;
-//                    }
                   } catch (e) {
                     print(e);
                   }
@@ -184,6 +148,19 @@ class CaptureState extends State<CaptureScreen> {
                                 List<String> result = [];
                                 if (snapshot.data != null && snapshot.hasData) {
                                   result = snapshot.data;
+                                  for (var item in result) {
+                                    bool found = false;
+                                    for (var child in snapshot.data) {
+                                      if (item == child) {
+                                        found = true;
+                                        break;
+                                      }
+                                    }
+                                    if (!found) {
+                                      result.add(item);
+                                    }
+                                  }
+
                                   return ListView.builder(
                                     shrinkWrap: true,
                                     scrollDirection: Axis.horizontal,
@@ -193,7 +170,13 @@ class CaptureState extends State<CaptureScreen> {
                                             ImageWidget(result[index]),
                                   );
                                 }
-                                return Container();
+                                return Container(
+                                  margin: EdgeInsets.only(left: margin10),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Colors.blue, width: 1)),
+                                  child: Image.asset('assets/images/empty.png'),
+                                );
                               },
                             )),
                       ],
@@ -223,7 +206,7 @@ class CaptureState extends State<CaptureScreen> {
               onTap: () {},
               child: Container(
                 margin: EdgeInsets.only(right: margin10),
-                child: Icon(Icons.camera),
+                child: Icon(Icons.developer_board),
               ),
             ),
           ],
