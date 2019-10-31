@@ -1,7 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_support/style/Style.dart';
 
 class ImageWidget extends StatefulWidget {
+  final String image;
+  ImageWidget(this.image);
+
   @override
   State<StatefulWidget> createState() => ImageState();
 }
@@ -16,13 +21,11 @@ class ImageState extends State<ImageWidget> {
         alignment: Alignment.center,
         children: <Widget>[
           Container(
+            width: 100.0,
+            height: 100.0,
             margin: EdgeInsets.all(10.0),
             decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [Colors.yellow[700], Colors.redAccent],
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft),
-                border: Border.all(color: Colors.red, width: 2.0)),
+                image: DecorationImage(image: FileImage(File(widget.image)))),
           ),
           GestureDetector(
               onTap: () {

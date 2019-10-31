@@ -178,14 +178,23 @@ class CaptureState extends State<CaptureScreen> {
                         Container(
                             height: 100,
                             alignment: Alignment.centerLeft,
-                            child: ListView(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              children: <Widget>[
-                                ImageWidget(),
-                                ImageWidget(),
-//                                ImageWidget(),
-                              ],
+                            child: StreamBuilder(
+                              stream: pathStream.stream,
+                              builder: (context, snapshot) {
+                                List<String> result = [];
+                                if (snapshot.data != null && snapshot.hasData) {
+                                  result = snapshot.data;
+                                  return ListView.builder(
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.horizontal,
+                                    itemCount: result.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) =>
+                                            ImageWidget(result[index]),
+                                  );
+                                }
+                                return Container();
+                              },
                             )),
                       ],
                     )))
