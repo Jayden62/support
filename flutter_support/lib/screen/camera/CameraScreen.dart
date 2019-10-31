@@ -1,13 +1,17 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_support/screen/capture/CaptureScreen.dart';
 import 'package:flutter_support/screen/zoom/ZoomScreen.dart';
 import 'package:flutter_support/style/Style.dart';
-import 'package:flutter_support/utils/CompressUtil.dart';
 import 'package:flutter_support/utils/NavigateUtil.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CameraScreen extends StatefulWidget {
+  final camera;
+
+  CameraScreen(this.camera);
+
   @override
   State<StatefulWidget> createState() {
     return CameraState();
@@ -112,10 +116,11 @@ class CameraState extends State<CameraScreen> {
             child: FlatButton(
               color: Colors.green[400],
               textColor: whiteColor,
-              onPressed: () async {
-                await cameraOne();
+              onPressed: () {
+                NavigateUtil()
+                    .pushScreen(context, CaptureScreen(widget.camera));
               },
-              child: Text('Camera meny'),
+              child: Text('Camera many'),
             ),
           )),
         ],

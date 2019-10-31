@@ -28,11 +28,20 @@ class SelfState extends State<SelfScreen> {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             _header(),
+            _body(),
           ],
         ),
       ),
     );
   }
+
+  Widget _body() => Expanded(
+        child: Container(
+          child: Column(
+            children: <Widget>[],
+          ),
+        ),
+      );
 
   Widget _platform() {
     /**
@@ -69,7 +78,7 @@ class SelfState extends State<SelfScreen> {
             GestureDetector(
               child: Container(
                 margin: EdgeInsets.only(right: margin10),
-                child: Icon(Icons.developer_mode),
+                child: Icon(Icons.sentiment_very_satisfied),
               ),
             ),
           ],

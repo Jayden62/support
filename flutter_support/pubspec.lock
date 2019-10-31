@@ -29,6 +29,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
+  camera_fix_exception:
+    dependency: "direct main"
+    description:
+      name: camera_fix_exception
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.0+5"
   charcode:
     dependency: transitive
     description:
@@ -159,12 +166,19 @@ packages:
     source: hosted
     version: "1.1.7"
   path:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.4"
+  path_provider:
+    dependency: "direct main"
+    description:
+      name: path_provider
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.4.0"
   pedantic:
     dependency: transitive
     description:

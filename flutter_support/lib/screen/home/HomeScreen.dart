@@ -10,6 +10,10 @@ import 'package:flutter_support/utils/NavigateUtil.dart';
 import 'package:flutter_support/widget/SwapWidget.dart';
 
 class HomeScreen extends StatefulWidget {
+  final camera;
+
+  HomeScreen(this.camera);
+
   @override
   State<StatefulWidget> createState() {
     return HomeState();
@@ -58,7 +62,7 @@ class HomeState extends State<HomeScreen> {
     List<Widget> pages = [
       GroupScreen(),
       BookingScreen(),
-      CameraScreen(),
+      CameraScreen(widget.camera),
     ];
     return Expanded(
         child: PageView(

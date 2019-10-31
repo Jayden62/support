@@ -1,22 +1,31 @@
 import 'dart:io';
 
+import 'package:camera_fix_exception/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_support/screen/home/HomeScreen.dart';
 
+List<CameraDescription> cameras;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
+  final firstCamera = cameras.first;
 
   /// Only set portrait orientation for device.
 
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]).then((_) {
-    runApp(MainScreen());
+    runApp(MainScreen(
+      camera: firstCamera,
+    ));
   });
 }
 
 class MainScreen extends StatefulWidget {
-  MainScreen();
+  final camera;
+
+  MainScreen({this.camera});
 
   @override
   State<StatefulWidget> createState() {
@@ -27,35 +36,7 @@ class MainScreen extends StatefulWidget {
 class MainState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-//    Widget screen;
-//    if (widget.result == null) {
-//      screen = BaseWidget(
-//        screen: Screens.SIGN_IN,
-//        connector: SignInConn(),
-//        arguments: [
-//          widget.uniqueDevice,
-//          widget.language,
-//          widget.background,
-//        ],
-//      );
-//    } else {
-//      screen = BaseWidget(
-//        screen: Screens.HOME,
-//        arguments: [
-//          widget.result.data,
-//          widget.uniqueDevice,
-//          widget.background,
-////          widget.language
-//        ],
-//      );
-//    }
     return MaterialApp(
-//      /// Localization, support english and vietnamese languages
-//        localizationsDelegates: [
-//          _newLocaleDelegate,
-//          GlobalMaterialLocalizations.delegate,
-//          GlobalWidgetsLocalizations.delegate,
-//        ],
         supportedLocales: [
           const Locale('en', ''),
           const Locale('vi', ''),
@@ -65,6 +46,6 @@ class MainState extends State<MainScreen> {
           primaryColor: Colors.white,
         ),
         debugShowCheckedModeBanner: false,
-        home: HomeScreen());
+        home: HomeScreen(widget.camera));
   }
 }
