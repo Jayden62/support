@@ -27,6 +27,7 @@ dependencies:
   rxdart: ^0.18.0
   flushbar: ^1.8.0
   dio: ^2.1.13
+  shared_preferences: ^0.5.3+3
   table_calendar: ^2.1.0
   pull_to_refresh: ^1.5.1
   location: ^2.3.5
@@ -57,6 +58,8 @@ flutter:
   assets:
     - assets/images/creator.jpg
     - assets/images/empty.png
+    -
+    - assets/files/booking.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

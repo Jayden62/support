@@ -1,70 +1,68 @@
-{
-  "data": [
-    {
-      "id": "997",
-      "user_id": "7208",
-      "title": "test",
-      "start": "2019-12-31"
-    },
-    {
-      "id": "1004",
-      "user_id": "8413",
-      "title": "Nestle",
-      "start": "2019-12-30"
-    },
-    {
-      "id": "1007",
-      "user_id": "4719",
-      "title": "Hop Tuan",
-      "start": "2019-12-29"
-    },
-    {
-      "id": "1009",
-      "user_id": "4798",
-      "title": "Hà đặt phòng",
-      "start": "2019-12-25"
-    },
-    {
-      "id": "1009",
-      "user_id": "4798",
-      "title": "Hà đặt phòng",
-      "start": "2019-12-24"
-    },
-    {
-      "id": "1009",
-      "user_id": "4798",
-      "title": "Hà đặt phòng",
-      "start": "2019-11-05"
-    },
-    {
-      "id": "1009",
-      "user_id": "4798",
-      "title": "Hà đặt phòng",
-      "start": "2019-11-04"
-    },
-    {
-      "id": "1009",
-      "user_id": "4798",
-      "title": "Hà đặt phòng",
-      "start": "2019-11-06"
-    },
-    {
-      "id": "1009",
-      "user_id": "4798",
-      "title": "Hà đặt phòng",
-      "start": "2019-11-11"
-    },
-    {
-      "id": "1009",
-      "user_id": "4798",
-      "title": "Hà đặt phòng",
-      "start": "2019-11-15"
-    },
-    {
-      "id": "1009",
-      "user_id": "4798",
-      "title": "Hà đặt phòng",
-      "start": "2019-12-11"
-    }
-  ]
-}
+[
+  {
+    "id": "997",
+    "user_id": "7208",
+    "title": "test",
+    "start": "2019-11-12"
+  },
+  {
+    "id": "1004",
+    "user_id": "8413",
+    "title": "Nestle",
+    "start": "2019-12-30"
+  },
+  {
+    "id": "1007",
+    "user_id": "4719",
+    "title": "Hop Tuan",
+    "start": "2019-11-10"
+  },
+  {
+    "id": "1009",
+    "user_id": "4798",
+    "title": "Hà đặt phòng",
+    "start": "2019-11-07"
+  },
+  {
+    "id": "1009",
+    "user_id": "4798",
+    "title": "Hà đặt phòng",
+    "start": "2019-12-24"
+  },
+  {
+    "id": "1009",
+    "user_id": "4798",
+    "title": "Hà đặt phòng",
+    "start": "2019-11-05"
+  },
+  {
+    "id": "1009",
+    "user_id": "4798",
+    "title": "Hà đặt phòng",
+    "start": "2019-11-04"
+  },
+  {
+    "id": "1009",
+    "user_id": "4798",
+    "title": "Hà đặt phòng",
+    "start": "2019-11-02"
+  },
+  {
+    "id": "1009",
+    "user_id": "4798",
+    "title": "Hà đặt phòng",
+    "start": "2019-11-01"
+  },
+  {
+    "id": "1009",
+    "user_id": "4798",
+    "title": "Hà đặt phòng",
+    "start": "2019-11-15"
+  },
+  {
+    "id": "1009",
+    "user_id": "4798",
+    "title": "Hà đặt phòng",
+    "start": "2019-11-04"
+  }
+]

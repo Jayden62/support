@@ -1,13 +1,13 @@
-class Booking {
-  List<Data> data;
+class Schedule {
+  List<Booking> data;
 
-  Booking({this.data});
+  Schedule({this.data});
 
-  Booking.fromJson(Map<String, dynamic> json) {
+  Schedule.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
-      data = new List<Data>();
+      data = new List<Booking>();
       json['data'].forEach((v) {
-        data.add(new Data.fromJson(v));
+        data.add(new Booking.fromJson(v));
       });
     }
   }
@@ -21,15 +21,15 @@ class Booking {
   }
 }
 
-class Data {
+class Booking {
   String id;
   String userId;
   String title;
   String start;
 
-  Data({this.id, this.userId, this.title, this.start});
+  Booking({this.id, this.userId, this.title, this.start});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  Booking.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     userId = json['user_id'];
     title = json['title'];
