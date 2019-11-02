@@ -23,6 +23,7 @@ class CaptureState extends State<CaptureScreen> {
   CameraController _controller;
   Future<void> _initializeControllerFuture;
   final pathStream = StreamController<List<String>>.broadcast();
+  List<String> pathList = [];
 
 //  List<Photo> photos = [];
 //  int count = 0;
@@ -116,7 +117,6 @@ class CaptureState extends State<CaptureScreen> {
                         '$timestamp.jpeg');
 
                     await _controller.takePicture(path);
-                    List<String> pathList = [];
                     pathList.add(path);
                     pathStream.sink.add(pathList);
                   } catch (e) {
@@ -148,18 +148,18 @@ class CaptureState extends State<CaptureScreen> {
                                 List<String> result = [];
                                 if (snapshot.data != null && snapshot.hasData) {
                                   result = snapshot.data;
-                                  for (var item in result) {
-                                    bool found = false;
-                                    for (var child in snapshot.data) {
-                                      if (item == child) {
-                                        found = true;
-                                        break;
-                                      }
-                                    }
-                                    if (!found) {
-                                      result.add(item);
-                                    }
-                                  }
+//                                  for (var item in result) {
+//                                    bool found = false;
+//                                    for (var child in snapshot.data) {
+//                                      if (item == child) {
+//                                        found = true;
+//                                        break;
+//                                      }
+//                                    }
+//                                    if (!found) {
+//                                      result.add(item);
+//                                    }
+//                                  }
 
                                   return ListView.builder(
                                     shrinkWrap: true,
